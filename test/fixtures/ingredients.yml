@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  calories: 1
+  protein: 1
+  carbs: 1
+  price: 9.99
+  serving_size: 1
+  servings: 1
+
+two:
+  name: MyString
+  calories: 1
+  protein: 1
+  carbs: 1
+  price: 9.99
+  serving_size: 1
+  servings: 1
