@@ -5,7 +5,7 @@ class CreateMeals < ActiveRecord::Migration
       t.string :description
       t.integer :prep_time
       t.string :clean_up
-      t.boolean :homemade
+      t.boolean :homemade, default: true
 
       t.timestamps
     end

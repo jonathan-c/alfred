@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(:version => 20140208221900) do
     t.string   "description"
     t.integer  "prep_time"
     t.string   "clean_up"
-    t.boolean  "homemade"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "homemade",    :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "users", :force => true do |t|
