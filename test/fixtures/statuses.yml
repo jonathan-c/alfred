@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  remaining_calories: 1
+  remaining_protein: 1
+  remaining_carbs: 1
+  weight: 1
+
+two:
+  remaining_calories: 1
+  remaining_protein: 1
+  remaining_carbs: 1
+  weight: 1
