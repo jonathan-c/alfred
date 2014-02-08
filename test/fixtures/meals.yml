@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  prep_time: 1
+  clean_up: MyString
+  homemade: false
+
+two:
+  name: MyString
+  description: MyString
+  prep_time: 1
+  clean_up: MyString
+  homemade: false
