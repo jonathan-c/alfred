@@ -17,4 +17,35 @@ class User < ActiveRecord::Base
   validates :weight, presence: true, numericality: { greater_than: 30, less_than_or_equal_to: 650}
   validates :feet, presence: true, numericality: { greater_than_or_equal_to: 4, less_than_or_equal_to: 7}
   validates :inches, presence: true, numericality: { less_than: 12 }
+  
+  def daily_requirement
+    "#{req_daily_calories} calories, #{req_daily_protein}g protein, #{req_daily_carbs}g carbs"
+  end
+  
+  def req_daily_calories
+    height = ((self.feet*12) + self.inches) * 2.54
+    divided_weight = (self.weight/2.2)
+    if self.gender == "male"
+      result = 66.5 + (13.75 * divided_weight) + (5.003 * height) - (6.775 * self.age)
+    else 
+  		result = 655.1 + (9.563 * divided_weight) + (1.850 * height) - (4.676 * self.age)
+		end
+		result*=1.375 # Accounts for physical expenditure
+  	result+=(result * 0.40) # Extra calories to gain weight
+  	cals_per_day = result.round
+  end
+  
+  def req_daily_protein
+    protein_grams = (weight * 1.1).round
+  end
+  
+  def req_daily_carbs
+    cal_total = req_daily_calories - ((req_daily_protein * 4) + (req_daily_calories*0.30))
+    carb_grams = (cal_total / 4.0).round
+  end
+  
+  def req_daily_fats
+    cal_total = req_daily_protein * 4
+    fats = ((req_daily_calories * 0.30) / 9.0).round
+  end
 end
