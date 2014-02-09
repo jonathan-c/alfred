@@ -3,4 +3,6 @@ class Meal < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :status
+  has_many   :ingredient_meals
+  has_many   :ingredients, :through => :ingredient_meals
 end
