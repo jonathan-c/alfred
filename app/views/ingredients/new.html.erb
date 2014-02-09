@@ -1,2 +1,31 @@
 <h1>Ingredients#new</h1>
 <p>Find me in app/views/ingredients/new.html.erb</p>
+
+<%= form_for(@ingredient) do |f| %>
+  <%= devise_error_messages! %>
+  
+  <%= f.label :name %><br/>
+  <%= f.text_field :name %>
+  
+  <%= f.label :calories %><br/>
+  <%= f.text_field :calories %>
+  
+  <%= f.label :protein %><br/>
+  <%= f.text_field :protein %>
+  
+  <%= f.label :carbs %><br/>
+  <%= f.text_field :protein %>
+  
+  <%= f.label :price %><br/>
+  <%= f.text_field :price %>
+  
+  <%= f.label :serving_size_oz %><br/>
+  <%= f.text_field :serving_size %>
+  
+  <%= f.label :servings %><br/>
+  <%= f.number_field :servings %>
+  
+<%= f.submit "Save" %>
+<% end %>
+
+

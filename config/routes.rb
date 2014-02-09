@@ -1,22 +1,10 @@
 Gainer::Application.routes.draw do
   
-  get "ingredients/new"
-
-  get "ingredients/create"
-
-  get "ingredients/edit"
-
-  get "ingredients/update"
-
-  get "ingredients/destroy"
-
-  get "ingredients/index"
-
-  get "ingredients/show"
-
   devise_for :users
 
   root to: "application#index"
+  
+  resources :ingredients
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
