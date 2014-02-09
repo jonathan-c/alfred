@@ -1,8 +1,6 @@
-<h1>Ingredients#new</h1>
-<p>Find me in app/views/ingredients/new.html.erb</p>
+<h1>Add New Ingredient</h1>
 
 <%= form_for(@ingredient) do |f| %>
-  <%= devise_error_messages! %>
   
   <%= f.label :name %><br/>
   <%= f.text_field :name %>
@@ -14,7 +12,7 @@
   <%= f.text_field :protein %>
   
   <%= f.label :carbs %><br/>
-  <%= f.text_field :protein %>
+  <%= f.text_field :carbs %>
   
   <%= f.label :price %><br/>
   <%= f.text_field :price %>
