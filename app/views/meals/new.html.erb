@@ -1,5 +1,22 @@
 <h1>Create Meal</h1>
 
 <%= form_for(@meal) do |f| %>
+  <%= f.label :name %><br/>
+  <%= f.text_field :name %>
   
+  <%= f.label :description %><br/>
+  <%= f.text_field :description %>
+  
+  <%= f.label :ingredients %><br/>
+  <%= f.select "ingredients", options_for_select(Ingredient.all.map{ |i| [i.name, i.id, {'name'=>i.id}] }) %>
+  
+  
+  <%= f.label :clean_up %><br/>
+  <%= f.select :clean_up, options_for_select([["Low", "low"], ["Med", "med"], ["High", "high"]]) %>
+ 
+  
+  <%= f.label :homemade %><br/>
+  <%= f.select :homemade, options_for_select([["Yes", true],["No", false]])  %>
+  
+  <% hidden_field :user_id, value: "#{current_user.id}" %>
 <% end %>
