@@ -28,11 +28,11 @@ class User < ActiveRecord::Base
     if self.gender == "male"
       result = 66.5 + (13.75 * divided_weight) + (5.003 * height) - (6.775 * self.age)
     else 
-  		result = 655.1 + (9.563 * divided_weight) + (1.850 * height) - (4.676 * self.age)
+      result = 655.1 + (9.563 * divided_weight) + (1.850 * height) - (4.676 * self.age)
 		end
 		result*=1.375 # Accounts for physical expenditure
-  	result+=(result * 0.40) # Extra calories to gain weight
-  	cals_per_day = result.round
+		result+=(result * 0.40) # Extra calories to gain weight
+		cals_per_day = result.round
   end
   
   def req_daily_protein
