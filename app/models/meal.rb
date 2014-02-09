@@ -5,4 +5,6 @@ class Meal < ActiveRecord::Base
   belongs_to :status
   has_many   :ingredient_meals
   has_many   :ingredients, :through => :ingredient_meals
+  
+  validate :name, presence: true, uniqueness: true
 end
