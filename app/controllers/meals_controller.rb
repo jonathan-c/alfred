@@ -5,12 +5,17 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.create(params[:meal])
-    ingredients = params[:ingredients]
-    servings = params[:servings]
-    ingredients.each_with_index do |ingredient, index|
-      IngredientMeal.create(meal_id: @meal.id, ingredient_id: ingredient, servings: servings[index])
+    if @meal.save
+      ingredients = params[:ingredients]
+      servings = params[:servings]
+      ingredients.each_with_index do |ingredient, index|
+        IngredientMeal.create(meal_id: @meal.id, ingredient_id: ingredient, servings: servings[index])
+      end
+      redirect_to meal_path(@meal)
+    else
+      flash[:error] = @meal.errors.empty? ? "Error" : @meal.errors.full_messages.to_sentence
+      redirect_to new_meal_path
     end
-    redirect_to root_path
   end
 
   def show
