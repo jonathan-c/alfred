@@ -13,7 +13,7 @@ class Meal < ActiveRecord::Base
     values = []
     ingredient_meals.each do |i|
       ingredient = Ingredient.find(i.ingredient_id)
-      values<<ingredient.send(type) * i.servings
+      values<<(ingredient.send(type) * i.servings)
     end
     values.inject(:+)
   end
@@ -28,5 +28,16 @@ class Meal < ActiveRecord::Base
   
   def carbs
     nutrition_total("carbs")
+  end
+  
+  def price
+    # calculates the total cost of the meal
+    ingredient_meals = IngredientMeal.where(meal_id: self.id)
+    values = []
+    ingredient_meals.each do |i|
+      ingredient = Ingredient.find(i.ingredient_id)
+      values<<((ingredient.price / ingredient.servings) * i.servings)
+    end
+    values.inject(:+)
   end
 end
