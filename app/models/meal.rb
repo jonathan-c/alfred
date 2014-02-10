@@ -35,8 +35,7 @@ class Meal < ActiveRecord::Base
     ingredient_meals = IngredientMeal.where(meal_id: self.id)
     values = []
     ingredient_meals.each do |i|
-      ingredient = Ingredient.find(i.ingredient_id)
-      values<<((ingredient.price / ingredient.servings) * i.servings)
+      values<<i.price
     end
     values.inject(:+)
   end
