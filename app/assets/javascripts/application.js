@@ -15,9 +15,10 @@
 //= require twitter/bootstrap
 //= require_tree .
 
+// find out where application.js is being loaded up. 
 $(document).ready(function(){
-	
-  $("#addNewIngredient").click(function(){
+  $("#addNewIngredient").off('click').on('click', function(e){
+		console.log(e);
     $("#ingredientField").append($("#new_ingredients_form").html());
   });
 

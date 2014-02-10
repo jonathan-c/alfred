@@ -1,6 +1,6 @@
 <div class="ingredientsForm" id="new_ingredients_form">
   <%= label_tag "ingredients" %>
-  <%= select_tag "ingredients", options_for_select(Ingredient.all.map{ |i| [i.name, i.id, {'name'=>i.id}] }) %>
+  <%= select_tag "ingredients[]", options_for_select(Ingredient.all.map{ |i| [i.name, i.id, {'name'=>i.id}] }) %>
   <%= label_tag "servings" %>
-  <%= number_field_tag "servings" %>
+  <%= number_field_tag "servings[]" %>
 </div>
