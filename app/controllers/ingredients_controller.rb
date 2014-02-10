@@ -1,9 +1,5 @@
 class IngredientsController < ApplicationController
   
-  # def index
-  #   @ingredients = Ingredient.all
-  # end
-  
   def new
     @ingredient = Ingredient.new
   end
@@ -17,21 +13,5 @@ class IngredientsController < ApplicationController
       render "new"
     end
   end
-  
-  # def show
-  #   @ingredient = Ingredient.find(params[:id])
-  # end
-  
-  # def edit
-  #   @ingredient = Ingredient.find(params[:id])
-  # end
-  
-  # def update
-  #   @ingredient = Ingredient.find(params[:id])
-  #   @ingredient.update_attributes(params[:ingredient])
-  # end
-  
-  # def destroy
-  # end
   
 end
