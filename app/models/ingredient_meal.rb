@@ -4,6 +4,8 @@ class IngredientMeal < ActiveRecord::Base
   belongs_to :meal
   belongs_to :ingredient
   
+  validates :servings, presence: true
+  
   def price
     ingredient = Ingredient.find(self.ingredient_id)
     (ingredient.price / ingredient.servings) * self.servings
