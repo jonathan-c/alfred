@@ -7,4 +7,26 @@ class Meal < ActiveRecord::Base
   has_many   :ingredients, :through => :ingredient_meals
   
   validate :name, presence: true, uniqueness: true
+  
+  def nutrition_total(type)
+    ingredient_meals = IngredientMeal.where(meal_id: self.id)
+    values = []
+    ingredient_meals.each do |i|
+      ingredient = Ingredient.find(i.ingredient_id)
+      values<<ingredient.send(type) * i.servings
+    end
+    values.inject(:+)
+  end
+  
+  def calories
+    nutrition_total("calories")
+  end
+  
+  def protein
+    nutrition_total("protein")
+  end
+  
+  def carbs
+    nutrition_total("carbs")
+  end
 end
