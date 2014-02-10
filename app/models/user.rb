@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   validates :feet, presence: true, numericality: { greater_than_or_equal_to: 4, less_than_or_equal_to: 7}
   validates :inches, presence: true, numericality: { less_than: 12 }
   
+  after_create :create_status
+  
   def daily_requirement
     "#{req_daily_calories} calories, #{req_daily_protein}g protein, #{req_daily_carbs}g carbs"
   end
@@ -57,5 +59,9 @@ class User < ActiveRecord::Base
       remaining_protein: self.req_daily_protein,
       remaining_carbs: self.req_daily_carbs
       )
+  end
+  
+  def eat(meal)
+    statuses.last.meals<<meal
   end
 end
