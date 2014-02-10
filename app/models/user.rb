@@ -48,4 +48,14 @@ class User < ActiveRecord::Base
     cal_total = req_daily_protein * 4
     fats = ((req_daily_calories * 0.30) / 9.0).round
   end
+  
+  def create_status
+    Status.create(
+      user_id: self.id, 
+      weight: self.weight, 
+      remaining_calories: self.req_daily_calories,
+      remaining_protein: self.req_daily_protein,
+      remaining_carbs: self.req_daily_carbs
+      )
+  end
 end
