@@ -3,4 +3,8 @@ class Status < ActiveRecord::Base
   
   belongs_to :user
   has_many :meals
+  
+  #def eat
+    # user.status
+  #end
 end

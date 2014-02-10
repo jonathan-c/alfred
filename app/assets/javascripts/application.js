@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+	
+  $("#addNewIngredient").click(function(){
+    $("#ingredientField").append($("#new_ingredients_form").html());
+  });
+
+	// $("#removeIngredient").click(function(){
+			// $("#ingredientField").pop();
+	// });
+});

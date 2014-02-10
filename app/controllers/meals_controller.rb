@@ -4,7 +4,8 @@ class MealsController < ApplicationController
   end
 
   def create
-   
+    debugger
+
   end
 
   def show

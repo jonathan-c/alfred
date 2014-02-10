@@ -1,5 +1,4 @@
 <h1>Create Meal</h1>
-
 <%= form_for(@meal) do |f| %>
   <%= f.label :name %><br/>
   <%= f.text_field :name %>
@@ -7,9 +6,15 @@
   <%= f.label :description %><br/>
   <%= f.text_field :description %>
   
-  <%= f.label :ingredients %><br/>
-  <%= f.select "ingredients", options_for_select(Ingredient.all.map{ |i| [i.name, i.id, {'name'=>i.id}] }) %>
+  <div id="ingredientField">
+    <%= render "ingredient_form" %>
   
+    <div class="hide" id="new_ingredients_form">
+      <%= render partial: "ingredient_form", locals: {skill: false} %>
+    </div>
+  </div>
+  
+  <a href="javascript:;" id="addNewIngredient">Add ingredient</a>  
   
   <%= f.label :clean_up %><br/>
   <%= f.select :clean_up, options_for_select([["", ""],["Low", "low"], ["Med", "med"], ["High", "high"]]) %>
@@ -19,4 +24,8 @@
   <%= f.select :homemade, options_for_select([["Yes", true],["No", false]])  %>
   
   <% hidden_field :user_id, value: "#{current_user.id}" %>
+  
+  <%= f.submit "Save" %>
 <% end %>
+
+
