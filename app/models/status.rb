@@ -10,6 +10,7 @@ class Status < ActiveRecord::Base
     user.update_attributes(weight: self.weight)
   end
   
+  # refactor
   def update_remaining_nutrients(meal)
     calories = [] 
     protein = []
