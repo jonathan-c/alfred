@@ -39,4 +39,15 @@ class Meal < ActiveRecord::Base
     end
     values.inject(:+)
   end
+  
+  def ingredients_price_hash
+    # Cost of each ingredient used in the meal
+    ingredient_meals = IngredientMeal.where(meal_id: self.id)
+    ingredients_price_hash = {}
+    ingredient_meals.each do |i|
+      ingredient = Ingredient.find(i.ingredient_id)
+      ingredients_price_hash["#{ingredient.name}"] = i.price
+    end
+    ingredients_price_hash
+  end
 end

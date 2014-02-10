@@ -4,7 +4,10 @@ class Status < ActiveRecord::Base
   belongs_to :user
   has_many :meals
   
-  #def eat
-    # user.status
-  #end
+  after_save :update_users_weight , :if => Proc.new {|a| a.weight_changed?}
+  
+  def update_users_weight
+    self.user.weight.update_attributes(weight: self.weight)
+  end
+  
 end
