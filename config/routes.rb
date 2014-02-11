@@ -1,8 +1,10 @@
 Gainer::Application.routes.draw do
 
+  get "home/index"
+
   devise_for :users
 
-  root to: "application#index"
+  root to: "home#index"
   
   resources :ingredients
   resources :meals
