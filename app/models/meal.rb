@@ -19,15 +19,15 @@ class Meal < ActiveRecord::Base
   end
   
   def calories
-    nutrition_total("calories")
+    nutrition_total("calories").round
   end
   
   def protein
-    nutrition_total("protein")
+    nutrition_total("protein").round
   end
   
   def carbs
-    nutrition_total("carbs")
+    nutrition_total("carbs").round
   end
   
   def price
