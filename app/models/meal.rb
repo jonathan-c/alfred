@@ -15,19 +15,19 @@ class Meal < ActiveRecord::Base
       ingredient = Ingredient.find(i.ingredient_id)
       values<<(ingredient.send(type) * i.servings)
     end
-    values.inject(:+)
+    values.inject(:+).round
   end
   
   def calories
-    nutrition_total("calories").round
+    nutrition_total("calories")
   end
   
   def protein
-    nutrition_total("protein").round
+    nutrition_total("protein")
   end
   
   def carbs
-    nutrition_total("carbs").round
+    nutrition_total("carbs")
   end
   
   def price
