@@ -4,7 +4,8 @@ class MealsController < ApplicationController
   end
 
   def create
-    @meal = Meal.create(params[:meal])
+    debugger
+    @meal = current_user.meals.create(params[:meal])
     if @meal.save
       ingredients = params[:ingredients]
       servings = params[:servings]
