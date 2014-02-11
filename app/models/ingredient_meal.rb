@@ -1,4 +1,5 @@
 class IngredientMeal < ActiveRecord::Base
+  self.primary_key = [:ingredient_id, :meal_id, :servings]
   attr_accessible :ingredient_id, :meal_id, :servings
   
   belongs_to :meal
