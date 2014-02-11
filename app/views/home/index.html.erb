@@ -5,6 +5,8 @@
 You have <%= current_user.statuses.last.remaining_calories %> calories, <%=  current_user.statuses.last.remaining_protein %>g protein, and <%= current_user.statuses.last.remaining_carbs %>g of carbs remaining for today.
 <h1>Meals I've Eaten Today.</h1>
 <% current_user.statuses.last.meals.each do |meal| %>
+  <div id="eaten-meals">
   <%= image_tag("dinner-plate-orange.svg", height: "250", width: "250") %><br/>
-  <%= meal.name %>
+  <%= link_to "#{meal.name}", meal_path(meal) %>
+  <div>
 <% end %>

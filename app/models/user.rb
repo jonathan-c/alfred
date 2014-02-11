@@ -62,12 +62,6 @@ class User < ActiveRecord::Base
   end
   
   def eat(meal)
-    if statuses.last.meals.include?(meal)
-      new_meal = meal.dup(:include => [:ingredients, :ingredient_meals])
-      new_meal.save
-      statuses.last.meals<<new_meal
-    else
-      statuses.last.meals<<meal
-    end
+    MealStatus.create(status_id: statuses.last.id, meal_id: meal.id)
   end
 end
