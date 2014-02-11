@@ -64,4 +64,8 @@ class User < ActiveRecord::Base
   def eat(meal)
     MealStatus.create(status_id: statuses.last.id, meal_id: meal.id)
   end
+  
+  def remove_meal(meal)
+    MealStatus.where(status_id: statuses.last.id, meal_id: meal.id).last.destroy
+  end
 end

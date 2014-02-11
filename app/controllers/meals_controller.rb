@@ -32,4 +32,10 @@ class MealsController < ApplicationController
     current_user.eat(@meal)
     redirect_to root_path, flash: {success: "Meal eaten. Yum yum yum."}
   end
+  
+  def remove_meal
+    @meal = Meal.find(params[:meal_id])
+    current_user.remove_meal(@meal)
+    redirect_to root_path, flash: {success: "Meal removed."}
+  end
 end

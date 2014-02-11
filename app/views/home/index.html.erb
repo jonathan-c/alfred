@@ -6,7 +6,8 @@ You have <%= current_user.statuses.last.remaining_calories %> calories, <%=  cur
 <h1>Meals I've Eaten Today.</h1>
 <% current_user.statuses.last.meals.each do |meal| %>
   <div id="eaten-meals">
-  <%= image_tag("dinner-plate-orange.svg", height: "250", width: "250") %><br/>
-  <%= link_to "#{meal.name}", meal_path(meal) %>
+    <%= image_tag("dinner-plate-orange.svg", height: "250", width: "250") %><br/>
+    <%= link_to "#{meal.name}", meal_path(meal) %><br/>
+    <%= button_to "Remove", meal_remove_path(meal) %>
   <div>
 <% end %>

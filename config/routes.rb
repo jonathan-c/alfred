@@ -8,7 +8,8 @@ Gainer::Application.routes.draw do
   
   resources :ingredients
   resources :meals do
-    get "/eat", to: "meals#eat"
+    post "/eat", to: "meals#eat"
+    post "/remove", to: "meals#remove_meal"
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
