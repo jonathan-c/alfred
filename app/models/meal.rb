@@ -37,7 +37,7 @@ class Meal < ActiveRecord::Base
     ingredient_meals.each do |i|
       values<<i.price
     end
-    values.inject(:+)
+    (values.inject(:+)*100).round / 100.0
   end
   
   def ingredients_price_hash
@@ -46,7 +46,7 @@ class Meal < ActiveRecord::Base
     ingredients_price_hash = {}
     ingredient_meals.each do |i|
       ingredient = Ingredient.find(i.ingredient_id)
-      ingredients_price_hash["#{ingredient.name}"] = i.price
+      ingredients_price_hash["#{ingredient.name}"] = (i.price*100).round / 100.0
     end
     ingredients_price_hash
   end

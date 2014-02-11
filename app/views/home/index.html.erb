@@ -1,2 +1,10 @@
-<%= link_to "Add Ingredient", new_ingredient_path %><br/>
-<%= link_to "Add Meal", new_meal_path %>
+<p>
+  You require <%= current_user.daily_requirement %> per day.
+</p>
+<br/>
+You have <%= current_user.statuses.last.remaining_calories %> calories, <%=  current_user.statuses.last.remaining_protein %>g protein, and <%= current_user.statuses.last.remaining_carbs %>g of carbs remaining for today.
+<h1>Meals I've Eaten Today.</h1>
+<% current_user.statuses.last.meals.each do |meal| %>
+  <%= image_tag("dinner-plate-orange.svg", height: "250", width: "250") %><br/>
+  <%= meal.name %>
+<% end %>

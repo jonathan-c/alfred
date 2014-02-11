@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   after_create :create_status
   
   def daily_requirement
-    "#{req_daily_calories} calories, #{req_daily_protein}g protein, #{req_daily_carbs}g carbs"
+    "#{req_daily_calories} calories, #{req_daily_protein}g protein, and #{req_daily_carbs}g of carbs"
   end
   
   def req_daily_calories

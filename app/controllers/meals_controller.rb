@@ -1,4 +1,9 @@
 class MealsController < ApplicationController
+  
+  def index
+    @meals = Meal.all
+  end
+  
   def new
     @meal = Meal.new
   end
@@ -20,5 +25,11 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.find(params[:id])
+  end
+  
+  def eat
+    @meal = Meal.find(params[:meal_id])
+    current_user.eat(@meal)
+    redirect_to root_path, flash: {success: "Meal eaten. Yum yum yum."}
   end
 end

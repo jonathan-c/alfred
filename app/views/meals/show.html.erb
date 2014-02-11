@@ -1,3 +1,6 @@
 <h1><%= @meal.name %></h1>
-<p>Find me in app/views/meals/show.html.erb</p>
-
+<h1><%= image_tag("dinner-plate-orange.svg", height: "250", width: "250") %></h1><br/>
+<% @meal.ingredients_price_hash.each do |k,v| %>
+  <h2><%= k %> $<%= v.to_s %></h2><br/>
+<% end %>
+<h2>Total cost of meal: <%= @meal.price %></h2>
