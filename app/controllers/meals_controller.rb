@@ -4,7 +4,6 @@ class MealsController < ApplicationController
   end
 
   def create
-    debugger
     @meal = current_user.meals.create(params[:meal])
     if @meal.save
       ingredients = params[:ingredients]

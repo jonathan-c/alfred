@@ -14,13 +14,10 @@
 	 		<div class="nav-collapse collapse">
 				<ul class="nav pull-right">
 					<!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
-					<li class="dropdown">
-				    <a class="dropdown-toggle" data-toggle="dropdown">My Groups<b class="caret"></b></a>
-				    <ul class="dropdown-menu">
-							<li><a href="#">Create Group</a></li>
-							<li><a href="#">Stuff</a></li>
-				    </ul>
+					<li>
+				    <a href="<%= new_ingredient_path %>">Add Ingredient</a>
 				  </li>
+				  <li><a href="<%= new_meal_path %>">Add Meal</a></li>
 					<%= yield :nav %>
 					  <% if user_signed_in? %>
 					    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
