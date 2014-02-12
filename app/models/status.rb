@@ -3,28 +3,32 @@ class Status < ActiveRecord::Base
   
   belongs_to :user
   has_many :meal_statuses
-  has_many :meals, :through => :meal_statuses #, after_add: :update_remaining_nutrients
+  has_many :meals, :through => :meal_statuses 
   
   after_save :update_users_weight , :if => Proc.new {|a| a.weight_changed?}
+  after_save :check_calories_for_negative_value, :if => Proc.new { |a| a.remaining_calories_changed? }
+  after_save :check_protein_for_negative_value, :if => Proc.new { |a| a.remaining_protein_changed? }
+  after_save :check_carbs_for_negative_value, :if => Proc.new { |a| a.remaining_carbs_changed? }
   
   def update_users_weight
     user.update_attributes(weight: self.weight)
   end
   
-  # refactor
-  # def update_remaining_nutrients(meal)
-  #     debugger
-  #     calories = [] 
-  #     protein = []
-  #     carbs = []
-  #     meals.each do |meal|
-  #       calories<<meal.calories
-  #       protein<<meal.protein
-  #       carbs<<meal.carbs
-  #     end
-  #     self.update_attributes(remaining_calories: user.req_daily_calories-calories.inject(:+))
-  #     self.update_attributes(remaining_protein: user.req_daily_protein-protein.inject(:+))
-  #     self.update_attributes(remaining_carbs: user.req_daily_carbs-carbs.inject(:+))
-  #   end
+  def check_calories_for_negative_value
+    if remaining_calories < 0
+      self.update_attributes(remaining_calories: 0)
+    end
+  end
   
+  def check_protein_for_negative_value
+    if remaining_protein < 0
+      self.update_attributes(remaining_protein: 0)
+    end
+  end
+  
+  def check_carbs_for_negative_value
+    if remaining_carbs < 0
+      self.update_attributes(remaining_carbs: 0)
+    end
+  end
 end
