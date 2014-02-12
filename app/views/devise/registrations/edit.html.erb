@@ -3,8 +3,26 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div><%= f.label :age %>
+  <%= f.text_field :age, :autofocus => true %></div>
+  
+  <div>
+    <%= f.radio_button :gender, "male", :checked => 'true' %><p>Male</p>
+    <%= f.radio_button :gender, "female" %><p>Female</p>
+  </div>
+  
+  <div><%= f.label :weight %>
+    <%= f.text_field :weight %></div>
+    
+  <div>
+    <%= f.label :feet %>
+    <%= f.text_field :feet %>
+    <%= f.label :inches %>
+    <%= f.text_field :inches %>
+  </div>
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

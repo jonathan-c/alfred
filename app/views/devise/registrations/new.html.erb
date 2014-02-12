@@ -3,7 +3,7 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
-  <div><%= f.label :age %><br/>
+  <div><%= f.label :age %>
   <%= f.text_field :age, :autofocus => true %></div>
   
   <div>
@@ -11,7 +11,7 @@
     <%= f.radio_button :gender, "female" %><p>Female</p>
   </div>
   
-  <div><%= f.label :weight %><br/>
+  <div><%= f.label :weight %>
     <%= f.text_field :weight %></div>
     
   <div>
@@ -21,13 +21,13 @@
     <%= f.text_field :inches %>
   </div>
 
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password %>
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></div>
 
   <div><%= f.submit "Sign up" %></div>

@@ -1,6 +1,7 @@
 Gainer::Application.routes.draw do
 
   get "home/index"
+  get "/profile", to: "home#profile"
 
   devise_for :users
 
