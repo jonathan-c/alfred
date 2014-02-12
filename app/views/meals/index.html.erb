@@ -1,6 +1,7 @@
 <h1>Choose Your Meal</h1>
 <div id="meals-eaten">
   <ul class="inline">
+    <% if @meals %>
     <% @meals.each do |meal| %>
       <li>
         <%= image_tag("dinner-plate-orange.svg", height: "250", width: "250") %><br/>
@@ -10,6 +11,8 @@
         <%= meal.carbs %>g carbs<br/>
         <%= button_to "Eat", meal_eat_path(meal), class: "btn btn-primary btn-lg" %>
       </li>
+    <% else %>
+      <h2>You haven't added any meals yet.</h2>
     <% end %>
   </ul>
 </div>
