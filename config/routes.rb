@@ -2,6 +2,7 @@ Gainer::Application.routes.draw do
 
   get "home/index"
   get "/profile", to: "home#profile"
+  post "/update_weight", to: "home#update_weight"
 
   devise_for :users
 

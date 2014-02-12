@@ -4,6 +4,8 @@ class HomeController < ApplicationController
   def index
   end
   
-  def profile
+  def update_weight
+    current_user.statuses.last.update_attributes(weight: params[:weight])
+    redirect_to root_path
   end
 end

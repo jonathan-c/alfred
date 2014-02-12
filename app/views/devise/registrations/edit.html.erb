@@ -4,12 +4,12 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :age %>
-  <%= f.text_field :age, :autofocus => true %></div>
+  <%= f.text_field :age, :autofocus => true %></div><br/>
   
   <div>
-    <%= f.radio_button :gender, "male", :checked => 'true' %><p>Male</p>
-    <%= f.radio_button :gender, "female" %><p>Female</p>
-  </div>
+    <%= f.radio_button :gender, "male", :checked => 'true' %>    Male 
+    <%= f.radio_button :gender, "female" %>    Female
+  </div><br/>
   
   <div><%= f.label :weight %>
     <%= f.text_field :weight %></div>

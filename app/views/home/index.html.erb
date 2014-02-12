@@ -1,13 +1,20 @@
 <p>
-  You require <%= current_user.daily_requirement %> per day.
+  You require <b><%= current_user.daily_requirement %></b> per day.
 </p>
 <br/>
-You have <%= current_user.statuses.last.remaining_calories %> calories, <%=  current_user.statuses.last.remaining_protein %>g protein, and <%= current_user.statuses.last.remaining_carbs %>g of carbs remaining for today.
-<h1>Meals I've Eaten Today.</h1>
-<% current_user.statuses.last.meals.each do |meal| %>
-  <div id="eaten-meals">
-    <%= image_tag("dinner-plate-orange.svg", height: "250", width: "250") %><br/>
-    <%= link_to "#{meal.name}", meal_path(meal) %><br/>
-    <%= button_to "Remove", meal_remove_path(meal) %>
-  <div>
+<% if current_user.statuses.last.weight.blank? %>
+  <%= render "weight_form" %>
 <% end %>
+<h1>Meals I've Eaten Today.</h1>
+<p>You have <b><%= current_user.statuses.last.remaining_calories %> calories, <%=  current_user.statuses.last.remaining_protein %>g protein, and <%= current_user.statuses.last.remaining_carbs %>g of carbs</b> remaining for today.</p>
+<div id="meals-eaten">
+<ul class="inline">
+  <% current_user.statuses.last.meals.each do |meal| %>
+    <li>
+      <%= link_to image_tag("dinner-plate-orange.svg", height: "250", width: "250"), meal_path(meal) %><br/>
+      <%= link_to "#{meal.name}", meal_path(meal) %><br/>
+      <%= button_to "Remove", meal_remove_path(meal), class: "btn btn-danger" %>
+    </li>
+  <% end %>
+</ul>
+</div>
