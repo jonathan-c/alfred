@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem "twitter-bootstrap-rails"
 gem "devise"
-gem "deep_cloneable", "~> 1.6.0"
 
 group :development do
   gem 'sqlite3'
