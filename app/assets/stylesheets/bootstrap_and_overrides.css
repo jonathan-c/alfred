@@ -6,9 +6,6 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-
-@import "bootstrap-responsive";
-
 form {
 	margin: 0 40% 20px;
 }
