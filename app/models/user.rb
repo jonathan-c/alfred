@@ -61,6 +61,13 @@ class User < ActiveRecord::Base
       )
   end
   
+  # Cron job runs this 1x day
+  def self.create_status_for_all_users
+    User.all.each do |user|
+      user.create_status
+    end
+  end
+  
   def eat(meal)
     MealStatus.create(status_id: statuses.last.id, meal_id: meal.id)
   end

@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem "twitter-bootstrap-rails"
 gem "devise"
+gem "whenever", :require => false
 
 group :development do
   gem 'sqlite3'
