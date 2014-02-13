@@ -1,9 +1,9 @@
 class RemoveDescriptionFromMeals < ActiveRecord::Migration
   def up
-    remove_column :ingredients, :description
+    remove_column :meals, :description
   end
 
   def down
-    add_column :ingredients, :description, :string
+    add_column :meals, :description, :string
   end
 end

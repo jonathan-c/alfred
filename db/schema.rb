@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140213211847) do
+ActiveRecord::Schema.define(:version => 20140213214547) do
 
   create_table "ingredient_meals", :id => false, :force => true do |t|
     t.integer  "meal_id"
@@ -46,12 +46,11 @@ ActiveRecord::Schema.define(:version => 20140213211847) do
 
   create_table "meals", :force => true do |t|
     t.string   "name"
-    t.string   "description"
     t.integer  "prep_time"
     t.string   "clean_up"
-    t.boolean  "homemade",    :default => true
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "homemade",   :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "user_id"
     t.integer  "status_id"
   end
