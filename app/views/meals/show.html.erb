@@ -4,5 +4,5 @@
   <h2><%= k %> $<%= v.to_s %></h2><br/>
 <% end %>
 <h2>Total cost of meal: $<%= @meal.price %></h2><br/>
-<%= button_to "Eat", meal_eat_path(meal), class: "btn btn-primary btn-lg" %>
+<%= button_to "Eat", meal_eat_path(@meal), class: "btn btn-primary btn-lg" %>
 

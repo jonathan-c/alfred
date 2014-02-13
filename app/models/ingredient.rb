@@ -1,5 +1,5 @@
 class Ingredient < ActiveRecord::Base
-  attr_accessible :name, :calories, :protein, :carbs, :price, :serving_size, :servings
+  attr_accessible :name, :calories, :protein, :carbs, :price, :serving_size, :servings, :unit
   
   has_many :ingredient_meals
   has_many :meals, :through => :ingredient_meals

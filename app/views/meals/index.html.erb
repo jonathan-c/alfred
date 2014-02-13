@@ -9,8 +9,11 @@
         <%= meal.calories %> calories<br/>
         <%= meal.protein %>g protein<br/>
         <%= meal.carbs %>g carbs<br/>
+        <%= link_to "Edit", edit_meal_path(meal) %>
+        <%= link_to 'Delete', meal_path(meal), method: :delete, data: { confirm: 'Are you sure?' } %>
         <%= button_to "Eat", meal_eat_path(meal), class: "btn btn-primary btn-lg" %>
       </li>
+    <% end %>
     <% else %>
       <h2>You haven't added any meals yet.</h2>
     <% end %>

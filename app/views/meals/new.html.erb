@@ -10,7 +10,8 @@
   <div id="ingredientField">
     <%= render "ingredient_form" %>
   </div>
-  <a href="javascript:;" id="addNewIngredient">Add ingredient</a>  
+  <a href="javascript:;" id="addNewIngredient">Add ingredient</a> 
+  <a href="javascript:;" id="removeIngredient">Remove ingredient</a>   
   
   <%= f.label :clean_up %><br/>
   <%= f.select :clean_up, options_for_select([["", ""],["Low", "low"], ["Med", "med"], ["High", "high"]]) %>

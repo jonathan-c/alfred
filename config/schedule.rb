@@ -17,6 +17,6 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 1.day, :at => '4:30 am' do
-  runner "User.create_status_for_all_users"
-end
+# every 1.day, :at => '4:30 am' do
+#   runner "User.create_status_for_all_users"
+# end

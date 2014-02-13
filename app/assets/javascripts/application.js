@@ -11,18 +11,17 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery_ujs	
 //= require twitter/bootstrap
 //= require_tree .
 
 // find out where application.js is being loaded up. 
 $(document).ready(function(){
-  $("#addNewIngredient").off('click').on('click', function(e){
-		console.log(e);
+  $("#addNewIngredient").on('click', function(){
     $("#ingredientField").append($("#new_ingredients_form").html());
   });
 
-	// $("#removeIngredient").click(function(){
-			// $("#ingredientField").pop();
-	// });
+	$("#removeIngredient").on('click', function(){
+    $("#ingredientField #new_ingredients_form").empty();
+  });
 });

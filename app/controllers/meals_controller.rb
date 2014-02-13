@@ -23,9 +23,36 @@ class MealsController < ApplicationController
       redirect_to new_meal_path
     end
   end
+  
+  def edit
+    @meal = Meal.find(params[:id])
+    @ingredients = @meal.ingredients
+  end
+  
+  def update
+    @meal = Meal.find(params[:id])
+    if @meal.update_attributes(params[:meal])
+    # There's gotta be a better way to do this.
+      IngredientMeal.delete_all("meal_id = #{@meal.id}")
+      ingredients = params[:ingredients]
+      servings = params[:servings]
+      ingredients.each_with_index do |ingredient, index|
+        IngredientMeal.create(meal_id: @meal.id, ingredient_id: ingredient, servings: servings[index])
+      end
+      redirect_to meal_path(@meal), flash: {success: "Meal updated."}
+    else
+      redirect_to edit_meal_path(@meal)
+    end
+  end
 
   def show
     @meal = Meal.find(params[:id])
+  end
+  
+  def destroy  
+    @meal = Meal.find(params[:id])
+    @meal.destroy  
+    redirect_to ingredients_path, flash: {success: "Successfully deleted meal."} 
   end
   
   def eat
