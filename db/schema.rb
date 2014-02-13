@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140212143253) do
+ActiveRecord::Schema.define(:version => 20140213211847) do
 
   create_table "ingredient_meals", :id => false, :force => true do |t|
     t.integer  "meal_id"

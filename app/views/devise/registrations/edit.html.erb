@@ -5,36 +5,36 @@
 
   <div><%= f.label :age %>
   <%= f.text_field :age, :autofocus => true %></div><br/>
-  
+
   <div>
-    <%= f.radio_button :gender, "male", :checked => 'true' %>    Male 
-    <%= f.radio_button :gender, "female" %>    Female
+  <%= f.radio_button :gender, "male", :checked => 'true' %>    Male 
+  <%= f.radio_button :gender, "female" %>    Female
   </div><br/>
-  
+
   <div><%= f.label :weight %>
-    <%= f.text_field :weight %></div>
-    
+  <%= f.text_field :weight %></div><br/>
+
   <div>
-    <%= f.label :feet %>
-    <%= f.text_field :feet %>
-    <%= f.label :inches %>
-    <%= f.text_field :inches %>
-  </div>
+  <%= f.label :feet %>
+  <%= f.text_field :feet %>
+  <%= f.label :inches %>
+  <%= f.text_field :inches %>
+  </div><br/>
 
   <div><%= f.label :email %>
-  <%= f.email_field :email %></div>
+  <%= f.email_field :email %></div><br/>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
   <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></div><br/>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
   <%= f.password_field :current_password %></div>
 
   <div><%= f.submit "Update" %></div>
@@ -45,3 +45,5 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
 <%= link_to "Back", :back %>
+
+

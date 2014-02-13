@@ -1,36 +1,35 @@
 <h2>Sign up</h2>
-
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  
-  <div><%= f.label :age %>
-  <%= f.text_field :age, :autofocus => true %></div><br/>
-  
-  <div>
-    <%= f.radio_button :gender, "male", :checked => 'true' %>    Male 
-    <%= f.radio_button :gender, "female" %>    Female
-  </div><br/>
-  
-  <div><%= f.label :weight %>
-    <%= f.text_field :weight %></div>
-    
-  <div>
-    <%= f.label :feet %>
-    <%= f.text_field :feet %>
-    <%= f.label :inches %>
-    <%= f.text_field :inches %>
-  </div>
+<%= devise_error_messages! %>
 
-  <div><%= f.label :email %>
-  <%= f.email_field :email %></div>
+<div><%= f.label :age %>
+<%= f.text_field :age, :autofocus => true %></div><br/>
 
-  <div><%= f.label :password %>
-  <%= f.password_field :password %></div>
+<div>
+  <%= f.radio_button :gender, "male", :checked => 'true' %>    Male 
+  <%= f.radio_button :gender, "female" %>    Female
+</div><br/>
 
-  <div><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></div>
+<div><%= f.label :weight %>
+  <%= f.text_field :weight %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+<div>
+  <%= f.label :feet %>
+  <%= f.text_field :feet %>
+  <%= f.label :inches %>
+  <%= f.text_field :inches %>
+</div>
+
+<div><%= f.label :email %>
+<%= f.email_field :email %></div>
+
+<div><%= f.label :password %>
+<%= f.password_field :password %></div>
+
+<div><%= f.label :password_confirmation %>
+<%= f.password_field :password_confirmation %></div>
+
+<div><%= f.submit "Sign up" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

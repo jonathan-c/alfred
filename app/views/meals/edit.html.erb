@@ -1,11 +1,8 @@
 <h1>Edit Meal</h1>
 <%= form_for(@meal) do |f| %>
   
-  <%= f.label :name %><br/>
-  <%= f.text_field :name %>
-  
-  <%= f.label :description %><br/>
-  <%= f.text_field :description %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br/>
   
   <% @ingredients.each do |ingredient| %>
     <div id="ingredientField">

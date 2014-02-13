@@ -1,30 +1,30 @@
-<h1>Add New Ingredient</h1>
+<h1>Add Ingredient</h1>
 
 <%= form_for(@ingredient) do |f| %>
   
-  <%= f.label :name %><br/>
-  <%= f.text_field :name %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br/>
   
-  <%= f.label :calories %><br/>
-  <%= f.text_field :calories %>
+  <%= f.label :calories %>
+  <%= f.text_field :calories %><br/>
   
-  <%= f.label :protein %><br/>
-  <%= f.text_field :protein %>
+  <%= f.label :protein %>
+  <%= f.text_field :protein %><br/>
   
-  <%= f.label :carbs %><br/>
-  <%= f.text_field :carbs %>
+  <%= f.label :carbs %>
+  <%= f.text_field :carbs %><br/>
   
-  <%= f.label :price %><br/>
-  <%= f.text_field :price %>
+  <%= f.label :price %>
+  <%= f.text_field :price %><br/>
   
   <%= f.label :serving_size_oz %>
-  <%= f.text_field :serving_size %>
+  <%= f.text_field :serving_size %><br/>
   
   <%= f.label :unit %>
   <%= f.select :unit, options_for_select([["oz"],["qty"],["tbsp"]]) %><br/>
   
-  <%= f.label :servings %><br/>
-  <%= f.number_field :servings %>
+  <%= f.label :servings %>
+  <%= f.number_field :servings %><br/>
   
 <%= f.submit "Save" %>
 <% end %>
