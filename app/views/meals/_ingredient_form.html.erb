@@ -1,35 +1,28 @@
-    <script type="text/javascript">
-    $(function(e) {
- // Below is the name of the textfield that will be autocomplete
-    $('.select_ingredient').autocomplete({
- // This shows the min length of charcters that must be typed before the autocomplete looks for a match.
-            minLength: 2,
- // This is the source of the auocomplete suggestions. In this case a list of names from the people controller, in JSON format.
-            source: '<%= ingredients_path(:json) %>',
-  // This updates the textfield when you move the updown the suggestions list, with your keyboard. In our case it will reflect the same value that you see in the suggestions which is the person.given_name.
-            focus: function(event, ui) {
-                $('.select_ingredient').val(ui.item.name);
-                return false;
-            },
- // Once a value in the drop down list is selected, do the following:
-            select: function(event, ui) {
- // place the person.given_name value into the textfield called 'select_origin'...
-                $('.select_ingredient').val(ui.item.name);
- // and place the person.id into the hidden textfield called 'link_origin_id'.
+<script type="text/javascript">
+$(function() {
+  $(document).on("keydown.autocomplete",".select_ingredient",function(e){
+    $(this).autocomplete({
+      minLength: 2,
+      source: '<%= ingredients_path(:json) %>',
+      focus: function(event, ui) {
+          $(this).val(ui.item.name);
+          return false;
+      },
+      select: function(event, ui) {
+        $(this).val(ui.item.name);
         $('.link_ingredient_id').val(ui.item.id);
-                return false;
-            }
-        })
- // The below code is straight from the jQuery example. It formats what data is displayed in the dropdown box, and can be customized.
-        .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-            return $( "<li></li>" )
-                .data( "item.autocomplete", item )
- // For now which just want to show the person.name in the list.
-                .append( "<a>" + item.name + "</a>" )
-                .appendTo( ul );
-        };
-    });
-    </script>
+        return false;
+      }
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li></li>" )
+      .data( "item.autocomplete", item )
+      .append( "<a>" + item.name + "</a>" )
+      .appendTo( ul );
+    };
+  });
+});
+</script>
 
 
 <div class="ingredientsForm" id="new_ingredients_form">
