@@ -1,9 +1,9 @@
 <h1>Edit Meal</h1>
 <%= form_for(@meal) do |f| %>
-  
+
   <%= f.label :name %>
   <%= f.text_field :name %><br/>
-  
+
   <% @ingredients.each do |ingredient| %>
     <div id="ingredientField">
       <div class="ingredientsForm" id="new_ingredients_form">
@@ -12,17 +12,17 @@
         <%= label_tag "servings" %>
         <%= text_field_tag "servings[]", IngredientMeal.where(ingredient_id: ingredient.id, meal_id: @meal.id).first.servings %>
       </div>
-    </div>  
+    </div>
   <% end %>
   <a href="javascript:;" id="addNewIngredient">Add ingredient</a>
-  
+
   <%= f.label :clean_up %><br/>
   <%= f.select :clean_up, options_for_select([["", ""],["Low", "low"], ["Med", "med"], ["High", "high"]]) %>
- 
+
   <%= f.label :homemade %><br/>
   <%= f.select :homemade, options_for_select([["Yes", true],["No", false]])  %>
-  
+
+  <%= f.label :category %><br/>
+  <%= f.collection_select :category_id, Category.all, :id, :name %>
   <%= f.submit "Save" %>
 <% end %>
-
-

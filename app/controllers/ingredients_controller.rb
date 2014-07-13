@@ -1,10 +1,19 @@
 class IngredientsController < ApplicationController
   before_filter :authenticate_user!
-  
+
   def index
-    @ingredients = Ingredient.all
+    if params[:term]
+      @ingredients = Ingredient.find(:all,:conditions => ['name LIKE ?', "#{params[:term]}%"])
+    else
+      @ingredients = Ingredient.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @ingredients.to_json }
+    end
   end
-  
+
   def new
     @ingredient = Ingredient.new
   end
@@ -18,15 +27,15 @@ class IngredientsController < ApplicationController
       render new_ingredient_path
     end
   end
-  
+
   def show
     @ingredient = Ingredient.find(params[:id])
   end
-  
+
   def edit
     @ingredient = Ingredient.find(params[:id])
   end
-  
+
   def update
     @ingredient = Ingredient.find(params[:id])
     if @ingredient.update_attributes(params[:ingredient])
@@ -35,10 +44,10 @@ class IngredientsController < ApplicationController
       redirect_to edit_ingredient_path
     end
   end
-  
-  def destroy  
-    @ingredient = Ingredient.find(params[:id])  
-    @ingredient.destroy  
+
+  def destroy
+    @ingredient = Ingredient.find(params[:id])
+    @ingredient.destroy
     redirect_to ingredients_path, flash: {success: "Successfully deleted ingredient."}
   end
 end

@@ -1,0 +1,4 @@
+<h1>Add Meal to Category</h1>
+<% @meals.each do |meal| %>
+  <%= meal.name %> | <%= meal.category.try(&:name) %> <%= link_to "Add", edit_meal_path(meal) %><br/>
+<% end %>

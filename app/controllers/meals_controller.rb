@@ -1,10 +1,10 @@
 class MealsController < ApplicationController
   before_filter :authenticate_user!
-  
+
   def index
     @meals = Meal.all
   end
-  
+
   def new
     @meal = Meal.new
   end
@@ -23,12 +23,12 @@ class MealsController < ApplicationController
       redirect_to new_meal_path
     end
   end
-  
+
   def edit
     @meal = Meal.find(params[:id])
     @ingredients = @meal.ingredients
   end
-  
+
   def update
     @meal = Meal.find(params[:id])
     if @meal.update_attributes(params[:meal])
@@ -48,19 +48,19 @@ class MealsController < ApplicationController
   def show
     @meal = Meal.find(params[:id])
   end
-  
-  def destroy  
+
+  def destroy
     @meal = Meal.find(params[:id])
-    @meal.destroy  
-    redirect_to ingredients_path, flash: {success: "Successfully deleted meal."} 
+    @meal.destroy
+    redirect_to ingredients_path, flash: {success: "Successfully deleted meal."}
   end
-  
+
   def eat
     @meal = Meal.find(params[:meal_id])
     current_user.eat(@meal)
     redirect_to root_path, flash: {success: "Meal eaten. Yum yum yum."}
   end
-  
+
   def remove_meal
     @meal = Meal.find(params[:meal_id])
     current_user.remove_meal(@meal)

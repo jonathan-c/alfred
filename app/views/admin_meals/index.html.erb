@@ -1,0 +1,5 @@
+<h1>Add Meal to Category</h1>
+<% @meals.each do |meal| %>
+  Here's some text.
+  <%= meal.name %> | <%= meal.category %> <%= link_to "Add", edit_category_meal_path(meal.category) %><br/>
+<% end %>

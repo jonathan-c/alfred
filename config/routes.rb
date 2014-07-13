@@ -1,5 +1,7 @@
 Gainer::Application.routes.draw do
 
+  get "admin_meals/index"
+
   get "home/index"
   get "/profile", to: "home#profile"
   post "/update_weight", to: "home#update_weight"
@@ -7,12 +9,17 @@ Gainer::Application.routes.draw do
   devise_for :users
 
   root to: "home#index"
-  
+
   resources :ingredients
   resources :meals do
     post "/eat", to: "meals#eat"
     post "/remove", to: "meals#remove_meal"
   end
+
+
+  resources :categories, only: [:index, :create, :edit, :destroy] do
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

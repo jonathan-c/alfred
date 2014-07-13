@@ -11,17 +11,41 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs	
+//= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
 
-// find out where application.js is being loaded up. 
-$(document).ready(function(){
-  $("#addNewIngredient").on('click', function(){
-    $("#ingredientField").append($("#new_ingredients_form").html());
-  });
+// find out where application.js is being loaded up.
 
-	$("#removeIngredient").on('click', function(){
-    $("#ingredientField #new_ingredients_form").empty();
-  });
+$(document).ready(function(){
+$(".addNewIngredient").on('click', function(e){
+  e.preventDefault();
+  $(".ingredientField").append($("#new_ingredients_form").html());
+
+  $(".select_ingredient").autocomplete({
+          minLength: 2,
+          source: '/ingredients',
+          focus: function(event, ui) {
+              $('.select_ingredient').val(ui.item.name);
+              return false;
+          },
+          select: function(event, ui) {
+            $('.select_ingredient').val(ui.item.name);
+            $('.link_ingredient_id').val(ui.item.id);
+            return false;
+          }
+      })
+      .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+          return $( "<li></li>" )
+              .data( "ui-autocomplete-item", item )
+              .append( "<a>" + item.name + "</a>" )
+              .appendTo( ul );
+      };
+});
+
+
+$(".removeIngredient").on('click', function(e){
+  e.preventDefault();
+$(".ingredientField #new_ingredients_form").empty();
+});
 });
