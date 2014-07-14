@@ -15,17 +15,35 @@
 //= require twitter/bootstrap
 //= require_tree .
 
-// find out where application.js is being loaded up.
-
 $(document).ready(function(){
-  $(".addNewIngredient").on('click', function(e){
-    e.preventDefault();
-    $(".ingredientField").append($("#new_ingredients_form").html());
+
+  var MaxInputs       = 8; //maximum input boxes allowed
+  var InputsWrapper   = $(".ingredientField"); //Input boxes wrapper ID
+  var AddButton       = $(".addNewIngredient"); //Add button ID
+
+  var x = InputsWrapper.length; //initlal text box count
+  var FieldCount=1; //to keep track of text box added
+
+  $(AddButton).click(function (e)  //on add input button click
+  {
+    if(x <= MaxInputs) //max input box allowed
+    {
+        FieldCount++; //text box added increment
+        //add input box
+        $(InputsWrapper).append('<div class="ingredientsForm"><label for="ingredients">Ingredients</label><input class="select_ingredient"><input class="link_ingredient_id" name="link[ingredient_id]" type="hidden"><label for="servings">Servings</label><input id="servings_" name="servings[]" type="text"></div>');
+
+        x++; //text box increment
+    }
+  return false;
   });
 
+  $("body").on("click",".removeIngredient", function(e){ //user click on remove text
+    if( x > 1 ) {
+            e.preventDefault();
+            $(".ingredientField").children("div[class=ingredientsForm]:last").remove();
+            x--; //decrement textbox
+    }
+  return false;
+})
 
-  $(".removeIngredient").on('click', function(e){
-    e.preventDefault();
-  $(".ingredientField #new_ingredients_form").empty();
-  });
 });
