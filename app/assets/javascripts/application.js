@@ -30,7 +30,7 @@ $(document).ready(function(){
     {
         FieldCount++; //text box added increment
         //add input box
-        $(InputsWrapper).append('<div class="ingredientsForm"><label for="ingredients">Ingredients</label><input class="select_ingredient"><input class="link_ingredient_id" name="link[ingredient_id]" type="hidden"><label for="servings">Servings</label><input id="servings_" name="servings[]" type="text"></div>');
+        $(InputsWrapper).append('<div class="ingredientsForm"><label for="ingredients">Ingredients</label><input class="select_ingredient" id="ingredients_" name="ingredients[]" type="text"><input id="link_ingredient_id" name="ingredient_ids[]" type="hidden"><label for="servings">Servings</label><input id="servings_" name="servings[]" type="text"></div>');
 
         x++; //text box increment
     }
@@ -40,6 +40,7 @@ $(document).ready(function(){
   $("body").on("click",".removeIngredient", function(e){ //user click on remove text
     if( x > 1 ) {
             e.preventDefault();
+            // $(this).parent('div').remove(); //remove text box
             $(".ingredientField").children("div[class=ingredientsForm]:last").remove();
             x--; //decrement textbox
     }

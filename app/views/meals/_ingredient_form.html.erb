@@ -10,7 +10,8 @@ $(function() {
       },
       select: function(event, ui) {
         $(this).val(ui.item.name);
-        $('.link_ingredient_id').val(ui.item.id);
+        if($(".select_ingredient").size() > 1) { $('#link_ingredient_id').val(ui.item.id); }
+        else { $('#link_original_ingredient_id').val(ui.item.id); }
         return false;
       }
     })
@@ -27,8 +28,8 @@ $(function() {
 
 <div class="ingredientsForm">
   <%= label_tag "ingredients" %>
-  <input class="select_ingredient"/>
-  <input class="link_ingredient_id" name="link[ingredient_id]" type="hidden"/>
+  <input id="link_original_ingredient_id" name="ingredient_ids[]" type="hidden">
+  <%= text_field_tag "ingredients[]", nil, { :class => "select_ingredient" } %>
   <%= label_tag "servings" %>
   <%= text_field_tag "servings[]" %>
 </div>
