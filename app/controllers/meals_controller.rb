@@ -31,10 +31,13 @@ class MealsController < ApplicationController
 
   def update
     @meal = Meal.find(params[:id])
+    ingredients = []
+    params[:ingredients].each do |i|
+      ingredients<<Ingredient.find_by_name(i).id
+    end
     if @meal.update_attributes(params[:meal])
     # There's gotta be a better way to do this.
       IngredientMeal.delete_all("meal_id = #{@meal.id}")
-      ingredients = params[:ingredients]
       servings = params[:servings]
       ingredients.each_with_index do |ingredient, index|
         IngredientMeal.create(meal_id: @meal.id, ingredient_id: ingredient, servings: servings[index])

@@ -1,20 +1,49 @@
+<script type="text/javascript">
+$(function() {
+  $(document).on("keydown.autocomplete",".select_ingredient",function(e){
+    $(this).autocomplete({
+      minLength: 2,
+      source: '<%= ingredients_path(:json) %>',
+      focus: function(event, ui) {
+          $(this).val(ui.item.name);
+          return false;
+      },
+      select: function(event, ui) {
+        $(this).val(ui.item.name);
+        if($(".select_ingredient").size() > 1) { $('#link_ingredient_id').val(ui.item.id); }
+        else { $('#link_original_ingredient_id').val(ui.item.id); }
+        return false;
+      }
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li></li>" )
+      .data( "item.autocomplete", item )
+      .append( "<a>" + item.name + "</a>" )
+      .appendTo( ul );
+    };
+  });
+});
+</script>
+
 <h1>Edit Meal</h1>
 <%= form_for(@meal) do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %><br/>
 
+  <div class="ingredientField">
   <% @ingredients.each do |ingredient| %>
-    <div id="ingredientField">
-      <div class="ingredientsForm" id="new_ingredients_form">
-        <%= label_tag "ingredients" %>
-        <%= select_tag "ingredients[]", options_for_select(Ingredient.all.map{ |i| [i.name, i.id]}, :selected => ingredient.id ) %>
-        <%= label_tag "servings" %>
-        <%= text_field_tag "servings[]", IngredientMeal.where(ingredient_id: ingredient.id, meal_id: @meal.id).first.servings %>
-      </div>
+    <div class="ingredientsForm">
+      <%= label_tag "ingredients" %>
+      <input id="link_original_ingredient_id" name="ingredient_ids[]" type="hidden">
+      <%= text_field_tag "ingredients[]", ingredient.name, { :class => "select_ingredient" } %>
+      <%= label_tag "servings" %>
+      <%= text_field_tag "servings[]", IngredientMeal.where(ingredient_id: ingredient.id, meal_id: @meal.id).first.servings %>
     </div>
   <% end %>
-  <a href="javascript:;" id="addNewIngredient">Add ingredient</a>
+  </div>
+  <a href="#" class="addNewIngredient">Add ingredient</a>
+  <a href="#" class="removeIngredient">Remove ingredient</a>
 
   <%= f.label :clean_up %><br/>
   <%= f.select :clean_up, options_for_select([["", ""],["Low", "low"], ["Med", "med"], ["High", "high"]]) %>
