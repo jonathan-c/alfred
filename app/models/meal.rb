@@ -14,22 +14,35 @@ class Meal < ActiveRecord::Base
     ingredient_meals = IngredientMeal.where(meal_id: self.id)
     values = []
     ingredient_meals.each do |i|
-      ingredient = Ingredient.find(i.ingredient_id)
+      ingredient = Ingredient.find_by_id(i.ingredient_id)
+      # Fix what happens when ingredient is not found.
       values<<(ingredient.send(type) * i.servings)
     end
     values.inject(:+).round
   end
 
   def calories
-    nutrition_total("calories")
+    begin
+      nutrition_total("calories")
+    rescue
+      nil
+    end
   end
 
   def protein
+    begin
     nutrition_total("protein")
+    rescue
+      nil
+    end
   end
 
   def carbs
-    nutrition_total("carbs")
+    begin
+      nutrition_total("carbs")
+    rescue
+      nil
+    end
   end
 
   def price

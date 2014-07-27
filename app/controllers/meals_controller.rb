@@ -2,7 +2,16 @@ class MealsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @meals = Meal.all
+    if params[:term]
+      @meals = Meal.find(:all,:conditions => ['name LIKE ?', "#{params[:term]}%"])
+    else
+      @meals = Meal.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @meals.to_json }
+    end
   end
 
   def new

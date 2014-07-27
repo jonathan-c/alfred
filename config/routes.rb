@@ -14,6 +14,7 @@ Gainer::Application.routes.draw do
   resources :meals do
     post "/eat", to: "meals#eat"
     post "/remove", to: "meals#remove_meal"
+    # post "/search", to: "meals#search", :as => "search"
   end
 
 

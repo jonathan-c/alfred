@@ -1,4 +1,39 @@
+<script type="text/javascript">
+$(function() {
+  $(document).on("keydown.autocomplete",".search_meals",function(e){
+    $(this).autocomplete({
+      minLength: 2,
+      source: '<%= meals_path(:json) %>',
+      focus: function(event, ui) {
+          $(this).val(ui.item.name);
+          return false;
+      },
+      select: function(event, ui) {
+        $(this).val(ui.item.name);
+        $('#link_meal_id').val(ui.item.id);
+        return false;
+      }
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li></li>" )
+      .data( "item.autocomplete", item )
+      .append( "<a>" + item.name + "</a>" )
+      .appendTo( ul );
+    };
+  });
+});
+</script>
+
 <h1>Choose Your Meal</h1>
+
+<!-- <div class="search_bar">
+  form_tag @meal, meal_search_path, :method => 'PUT'
+  <%= label_tag "search" %>
+  <input id="link_meal_id" name="meals[]" type="hidden">
+  <%= text_field_tag "meals[]", nil, { :class => "search_meals" } %>
+  <%= submit_tag %>
+</div> -->
+
 <div id="meals-eaten">
   <ul class="inline">
     <% if @meals %>

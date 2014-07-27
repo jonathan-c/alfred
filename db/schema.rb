@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140509215821) do
+ActiveRecord::Schema.define(:version => 20140727233658) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -35,12 +35,10 @@ ActiveRecord::Schema.define(:version => 20140509215821) do
     t.integer  "calories"
     t.integer  "protein"
     t.integer  "carbs"
-    t.decimal  "price",        :precision => 5, :scale => 2, :default => 0.0
     t.integer  "serving_size"
-    t.float    "servings"
-    t.datetime "created_at",                                                   :null => false
-    t.datetime "updated_at",                                                   :null => false
-    t.string   "unit",                                       :default => "oz"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "unit",         :default => "oz"
   end
 
   create_table "meal_statuses", :force => true do |t|

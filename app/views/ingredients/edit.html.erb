@@ -1,32 +1,24 @@
 <h1>Edit Ingredient</h1>
 
 <%= form_for(@ingredient) do |f| %>
-  
+
   <%= f.label :name %><br/>
   <%= f.text_field :name %>
-  
+
   <%= f.label :calories %><br/>
   <%= f.text_field :calories %>
-  
+
   <%= f.label :protein %><br/>
   <%= f.text_field :protein %>
-  
+
   <%= f.label :carbs %><br/>
   <%= f.text_field :carbs %>
-  
-  <%= f.label :price %><br/>
-  <%= f.text_field :price %>
-  
+
   <%= f.label :serving_size_oz %>
   <%= f.text_field :serving_size %>
-  
+
   <%= f.label :unit %>
   <%= f.select :unit, options_for_select([["oz"],["qty"],["tbsp"]]) %><br/>
-  
-  <%= f.label :servings %><br/>
-  <%= f.number_field :servings %>
-  
+
 <%= f.submit "Save" %>
 <% end %>
-
-
