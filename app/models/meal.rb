@@ -45,24 +45,4 @@ class Meal < ActiveRecord::Base
     end
   end
 
-  def price
-    # calculates the total cost of the meal
-    ingredient_meals = IngredientMeal.where(meal_id: self.id)
-    values = []
-    ingredient_meals.each do |i|
-      values<<i.price
-    end
-    values.inject(:+).round(2)
-  end
-
-  def ingredients_price_hash
-    # Cost of each ingredient used in the meal
-    ingredient_meals = IngredientMeal.where(meal_id: self.id)
-    ingredients_price_hash = {}
-    ingredient_meals.each do |i|
-      ingredient = Ingredient.find(i.ingredient_id)
-      ingredients_price_hash["#{ingredient.name}"] = i.price.round(2)
-    end
-    ingredients_price_hash
-  end
 end
