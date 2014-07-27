@@ -1,6 +1,3 @@
 <h1><%= @meal.name %></h1>
 <h1><%= image_tag("dinner-plate-orange.svg", height: "250", width: "250") %></h1><br/>
-<% @meal.ingredients_price_hash.each do |k,v| %>
-  <h2><%= k %> $<%= v.to_s %></h2><br/>
-<% end %>
 <%= button_to "Eat", meal_eat_path(@meal), class: "btn btn-primary btn-lg" %>
